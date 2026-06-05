@@ -7,12 +7,27 @@ database:
           password: TEXT NOT_NULL
           hash_type: TEXT NOT_NULL DEFAULT 'sha256'
           role_id: INTEGER REFERENCES roles(id)
+          author: TEXT
+          created: TEXT
+          last_editor: TEXT
+          last_change: TEXT
+          change_cnt: INTEGER
     - roles:
         fields:
           id: INTEGER PRIMARY KEY
           name: TEXT NOT_NULL UNIQUE
+          author: TEXT
+          created: TEXT
+          last_editor: TEXT
+          last_change: TEXT
+          change_cnt: INTEGER
     - permissions:
         fields:
           id: INTEGER PRIMARY KEY
           name: TEXT NOT_NULL
           role_id: INTEGER REFERENCES roles(id)
+          author: TEXT
+          created: TEXT
+          last_editor: TEXT
+          last_change: TEXT
+          change_cnt: INTEGER
