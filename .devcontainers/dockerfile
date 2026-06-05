@@ -1,0 +1,9 @@
+FROM python:3.9-alpine
+
+RUN apk add --no-cache bash
+
+RUN pip install --no-cache-dir flask
+
+RUN addgroup -g 1000 dkr && \
+    adduser -u 1000 -G dkr -s /bin/bash -D dkr
+

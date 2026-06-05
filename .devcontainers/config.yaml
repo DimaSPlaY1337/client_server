@@ -1,0 +1,18 @@
+database:
+  tables:
+    - users:
+        fields:
+          id: INTEGER PRIMARY KEY AUTOINCREMENT
+          username: TEXT NOT_NULL UNIQUE
+          password: TEXT NOT_NULL
+          hash_type: TEXT NOT_NULL DEFAULT 'sha256'
+          role_id: INTEGER REFERENCES roles(id)
+    - roles:
+        fields:
+          id: INTEGER PRIMARY KEY
+          name: TEXT NOT_NULL UNIQUE
+    - permissions:
+        fields:
+          id: INTEGER PRIMARY KEY
+          name: TEXT NOT_NULL
+          role_id: INTEGER REFERENCES roles(id)
