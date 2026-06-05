@@ -49,7 +49,7 @@ def main():
     default_db_path = os.path.join(parent_dir, 'db.sqlite')  # Путь к БД в родительской папке
     # 1. Парсинг аргументов
     parser.add_argument('-db', '--database', type=str, default=default_db_path, help="Path to database file")
-    parser.add_argument('-s', '--schema', type=str, required=False, default='config.yaml', help="Path to schema config")
+    parser.add_argument('-s', '--schema', type=str, required=False, default='.devcontainers/config.yaml', help="Path to schema config")
     
     args = parser.parse_args()
 
