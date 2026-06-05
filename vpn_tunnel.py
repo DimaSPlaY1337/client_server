@@ -20,6 +20,10 @@ def create_tun(name="tun0"):
     tun = os.open("/dev/net/tun", os.O_RDWR)
     ifr = struct.pack("16sH", name.encode(), IFF_TUN)
     fcntl.ioctl(tun, TUNSETIFF, ifr)
+    
+    # Автоматически поднимаем интерфейс, чтобы избежать ошибки Errno 5
+    os.system(f"ip link set dev {name} up")
+    
     return tun
 
 def xor_encrypt(data, key=XOR_KEY):
